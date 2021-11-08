@@ -1,0 +1,108 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/plugin-icon.png</param>
+        <param name="plugin-logo">images/plugin-logo.png</param>
+    </plugin-info>
+
+    <resource type="download" name="images/" key="images" location="images/"/>
+    <resource type="i18n" name="i18n" location="confluence-syntax-highlighter"/>
+
+    <web-resource key="confluence-syntax-highlighter" name="Confluence Syntax Highlighter">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <context>confluence-syntax-highlighter</context>
+
+        <!-- 코드 하이라이트를 위해서 사용할 JS/CSS 임포트 -->
+        <resource type="download" name="atom-one-dark.css" location="/css/atom-one-dark.css"/>
+        <resource type="download" name="confluence-syntax-highlighter.css" location="/css/confluence-syntax-highlighter.css"/>
+        <resource type="download" name="highlight-11.3.1.min.js" location="/js/highlight-11.3.1.min.js"/>
+        <resource type="download" name="confluence-syntax-highlighter.js" location="/js/confluence-syntax-highlighter.js"/>
+    </web-resource>
+
+    <xhtml-macro name="helloworld"
+                 class="com.yourdomain.HelloWorld"
+                 key="helloworld-macro"
+                 icon="/download/resources/${project.groupId}.${project.artifactId}/images/plugin-logo.png">
+
+        <!-- 매크로 편집창에서 표시할 매크로 설명 -->
+        <description key="helloworld.desc"/>
+
+        <!-- 매크로 브라우저에서 서식 카테고리에 표시되도록 설정 -->
+        <category name="formatting" />
+
+        <!-- 매크로 편집창에서 표시할 입력 옵션 -->
+        <parameters>
+            <parameter name="Language" type="enum" >
+                <option key="showNameInPlaceholder" value="true" />
+                <option key="showValueInPlaceholder" value="true" />
+                <value name="accesslog"/>
+                <value name="asciidoc"/>
+                <value name="awk"/>
+                <value name="bash"/>
+                <value name="csharp"/>
+                <value name="cshtml"/>
+                <value name="c"/>
+                <value name="cpp"/>
+                <value name="cmake"/>
+                <value name="css"/>
+                <value name="dart"/>
+                <value name="diff"/>
+                <value name="dns"/>
+                <value name="dockerfile"/>
+                <value name="go"/>
+                <value name="gradle"/>
+                <value name="groovy"/>
+                <value name="html"/>
+                <value name="http"/>
+                <value name="toml"/>
+                <value name="json"/>
+                <value name="java"/>
+                <value name="javascript"/>
+                <value name="kotlin"/>
+                <value name="lua"/>
+                <value name="makefile"/>
+                <value name="markdown"/>
+                <value name="nginx"/>
+                <value name="objectivec"/>
+                <value name="php"/>
+                <value name="perl"/>
+                <value name="plaintext"/>
+                <value name="powershell"/>
+                <value name="properties"/>
+                <value name="python"/>
+                <value name="r"/>
+                <value name="ruby"/>
+                <value name="rust"/>
+                <value name="scss"/>
+                <value name="sql"/>
+                <value name="scala"/>
+                <value name="shell"/>
+                <value name="svelte"/>
+                <value name="swift"/>
+                <value name="typescript"/>
+                <value name="vbscript"/>
+                <value name="vim"/>
+                <value name="yml"/>
+            </parameter>
+            <parameter name="Title" type="string">
+                <option key="showNameInPlaceholder" value="true" />
+                <option key="showValueInPlaceholder" value="true" />
+            </parameter>
+            <parameter name="Collapse" type="boolean">
+                <option key="showNameInPlaceholder" value="true" />
+                <option key="showValueInPlaceholder" value="true" />
+            </parameter>
+            <parameter name="LineNumber" type="boolean">
+                <option key="showNameInPlaceholder" value="true" />
+                <option key="showValueInPlaceholder" value="true" />
+            </parameter>
+            <parameter name="StartLineNumber" type="string">
+                <option key="showNameInPlaceholder" value="true" />
+                <option key="showValueInPlaceholder" value="true" />
+            </parameter>
+        </parameters>
+    </xhtml-macro>
+
+</atlassian-plugin>
